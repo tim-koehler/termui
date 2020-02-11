@@ -40,11 +40,11 @@ func main() {
 	}
 	defer ui.Close()
 
-	p := widgets.NewParagraph()
-	p.Text = "Hello World!"
-	p.SetRect(0, 0, 25, 5)
+	t := widgets.NewTextBox()
+	t.SetText("Hello World!")
+	t.SetRect(0, 0, 25, 5)
 
-	ui.Render(p)
+	ui.Render(t)
 
 	for e := range ui.PollEvents() {
 		if e.Type == ui.KeyboardEvent {
@@ -68,7 +68,8 @@ func main() {
 - [Sparkline](./_examples/sparkline.go)
 - [StackedBarChart](./_examples/stacked_barchart.go)
 - [Table](./_examples/table.go)
-- [Tabs](./_examples/tabs.go)
+- [TabPane](./_examples/tabpane.go)
+- [TextBox](./_examples/textbox.go)
 
 Run an example with `go run _examples/{example}.go` or run each example consecutively with `make run-examples`.
 

@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"math"
 	"reflect"
+	"strings"
 
 	rw "github.com/mattn/go-runewidth"
 	wordwrap "github.com/mitchellh/go-wordwrap"
@@ -47,6 +48,15 @@ func SelectColor(colors []Color, index int) Color {
 
 func SelectStyle(styles []Style, index int) Style {
 	return styles[index%len(styles)]
+}
+
+func ContainsString(a []string, s string) bool {
+	for _, i := range a {
+		if i == s {
+			return true
+		}
+	}
+	return false
 }
 
 // Math ------------------------------------------------------------------------
@@ -178,12 +188,51 @@ func RunesToStyledCells(runes []rune, style Style) []Cell {
 	return cells
 }
 
+// CellsToString converts []Cell to a string without any formatting tags
 func CellsToString(cells []Cell) string {
 	runes := make([]rune, len(cells))
 	for i, cell := range cells {
 		runes[i] = cell.Rune
 	}
 	return string(runes)
+}
+
+// CellsToStyledString converts []Cell to a string preserving the formatting tags
+func CellsToStyledString(cells []Cell, defaultStyle Style) string {
+	sb := strings.Builder{}
+	runes := make([]rune, len(cells))
+	currentStyle := cells[0].Style
+	var j int
+
+	for _, cell := range cells {
+		if currentStyle != cell.Style {
+			writeStyledText(&sb, runes[:j], currentStyle, defaultStyle)
+
+			currentStyle = cell.Style
+			j = 0
+		}
+
+		runes[j] = cell.Rune
+		j++
+	}
+
+	// Write the last characters left in runes slice
+	writeStyledText(&sb, runes[:j], currentStyle, defaultStyle)
+
+	return sb.String()
+}
+
+func writeStyledText(sb *strings.Builder, runes []rune, currentStyle Style, defaultStyle Style) {
+	if currentStyle != defaultStyle && currentStyle != StyleClear {
+		sb.WriteByte(tokenBeginStyledText)
+		sb.WriteString(string(runes))
+		sb.WriteByte(tokenEndStyledText)
+		sb.WriteByte(tokenBeginStyle)
+		sb.WriteString(currentStyle.String())
+		sb.WriteByte(tokenEndStyle)
+	} else {
+		sb.WriteString(string(runes))
+	}
 }
 
 func TrimCells(cells []Cell, w int) []Cell {
@@ -208,10 +257,24 @@ func SplitCells(cells []Cell, r rune) [][]Cell {
 			temp = append(temp, cell)
 		}
 	}
-	if len(temp) > 0 {
-		splitCells = append(splitCells, temp)
-	}
+	splitCells = append(splitCells, temp)
 	return splitCells
+}
+
+//JoinCells converts [][]cell to a []cell using r as line breaker
+func JoinCells(cells [][]Cell, r rune) []Cell {
+	joinCells := make([]Cell, 0)
+	lb := Cell{Rune: r, Style: StyleClear}
+	length := len(cells)
+
+	for i, cell := range cells {
+		if i < length-1 {
+			cell = append(cell, lb)
+		}
+		joinCells = append(joinCells, cell...)
+	}
+
+	return joinCells
 }
 
 type CellWithX struct {
