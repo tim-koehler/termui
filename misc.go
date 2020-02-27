@@ -13,11 +13,3 @@ var PRINTABLE_KEYS = append(
 	"<Tab>",
 	"<Enter>",
 )
-
-type Alignment uint
-
-const (
-	AlignLeft Alignment = iota
-	AlignCenter
-	AlignRight
-)
