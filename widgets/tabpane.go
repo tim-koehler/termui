@@ -7,7 +7,7 @@ package widgets
 import (
 	"image"
 
-	. "github.com/tim-koehler/termui/v3"
+	. "github.com/tim-koehler/termui"
 )
 
 // TabPane is a renderable widget which can be used to conditionally render certain tabs/views.

@@ -126,6 +126,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#237]: https://github.com/tim-koehler/termui/pull/237
 [#126]: https://github.com/tim-koehler/termui/pull/126
 
-[Unreleased]: https://github.com/tim-koehler/termui/compare/v3.1.0...HEAD
-[3.1.0]: https://github.com/tim-koehler/termui/compare/v3.0.0...v3.1.0
+[Unreleased]: https://github.com/tim-koehler/termui/compare.1.0...HEAD
+[3.1.0]: https://github.com/tim-koehler/termui/compare.0.0...v3.1.0
 [3.0.0]: https://github.com/tim-koehler/termui/compare/v2.3.0...v3.0.0

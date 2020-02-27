@@ -6,7 +6,7 @@ import (
 	"image"
 	"log"
 
-	ui "github.com/tim-koehler/termui/v3"
+	ui "github.com/tim-koehler/termui"
 )
 
 // TODO make example interactive so you can draw lines

@@ -7,7 +7,7 @@ package widgets
 import (
 	"image"
 
-	. "github.com/tim-koehler/termui/v3"
+	. "github.com/tim-koehler/termui"
 )
 
 // Sparkline is like: ▅▆▂▂▅▇▂▂▃▆▆▆▅▃. The data points should be non-negative integers.

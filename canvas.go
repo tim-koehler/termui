@@ -3,7 +3,7 @@ package termui
 import (
 	"image"
 
-	"github.com/tim-koehler/termui/v3/drawille"
+	"github.com/tim-koehler/termui/drawille"
 )
 
 type Canvas struct {

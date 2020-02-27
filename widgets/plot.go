@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"image"
 
-	. "github.com/tim-koehler/termui/v3"
+	. "github.com/tim-koehler/termui"
 )
 
 // Plot has two modes: line(default) and scatter.

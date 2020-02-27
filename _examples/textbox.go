@@ -5,8 +5,8 @@ package main
 import (
 	"log"
 
-	ui "github.com/tim-koehler/termui/v3"
-	"github.com/tim-koehler/termui/v3/widgets"
+	ui "github.com/tim-koehler/termui"
+	"github.com/tim-koehler/termui/widgets"
 )
 
 func main() {

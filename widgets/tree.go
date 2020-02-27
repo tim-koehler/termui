@@ -5,8 +5,8 @@ import (
 	"image"
 	"strings"
 
-	. "github.com/tim-koehler/termui/v3"
 	rw "github.com/mattn/go-runewidth"
+	. "github.com/tim-koehler/termui"
 )
 
 const treeIndent = "  "

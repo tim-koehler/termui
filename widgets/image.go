@@ -8,7 +8,7 @@ import (
 	"image"
 	"image/color"
 
-	. "github.com/tim-koehler/termui/v3"
+	. "github.com/tim-koehler/termui"
 )
 
 type Image struct { // TODO v4: rename to ImageBox
