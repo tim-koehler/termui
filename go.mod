@@ -1,4 +1,4 @@
-module github.com/tim-koehler/termui/v3
+module github.com/tim-koehler/termui
 
 require (
 	github.com/cjbassi/drawille-go v0.0.0-20190126131713-27dc511fe6fd
